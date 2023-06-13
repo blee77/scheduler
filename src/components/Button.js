@@ -8,6 +8,7 @@ export default function Button(props) {
     "button--danger": props.danger,
   });
 
+
   return (
     <button
       onClick={props.onClick}
