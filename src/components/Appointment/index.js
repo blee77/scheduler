@@ -73,7 +73,7 @@ export default function Appointment(props) {
   };
 
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
 
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
@@ -86,8 +86,8 @@ export default function Appointment(props) {
       )}
       {mode === SAVING && <Status message="Saving..." />}
       {mode === DELETING && <Status message="Deleting..." />}
-      {mode === ERROR_DELETE && <Error onClose={()=> transition(SHOW)} message="Error: Could not cancel appointment" />}
-      {mode === ERROR_SAVE && <Error onClose={()=> transition(CREATE)} message="Unable to save" />}
+      {mode === ERROR_DELETE && <Error onClose={back} message="Error: Could not cancel appointment" />}
+      {mode === ERROR_SAVE && <Error onClose={back} message="Unable to save" />}
       {mode === CONFIRM && (
         <Confirm
           message="Are you sure you want to delete this interview?"
